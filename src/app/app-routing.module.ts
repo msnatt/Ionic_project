@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'detail/:dataobj',
     loadChildren: () => import('./pages/detail/detail.module').then( m => m.DetailPageModule)
+  },  {
+    path: 'homedb',
+    loadChildren: () => import('./pages/homedb/homedb.module').then( m => m.HomedbPageModule)
   }
+
 
 ];
 
