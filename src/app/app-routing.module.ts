@@ -16,9 +16,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule)
   },
   {
-    path: 'contact/:uname/:psd',
+    path: 'contact',
     loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'detail/:dataobj',
+    loadChildren: () => import('./pages/detail/detail.module').then( m => m.DetailPageModule)
   }
+
 ];
 
 @NgModule({

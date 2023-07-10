@@ -18,7 +18,13 @@ export class HomePage implements OnInit {
   }
 
   gotonext(){
-    this.routerconst.navigate(['/contact', this.username, this.password])
+    // this.routerconst.navigate(['/contact', this.username, this.password])
+    let dataobj={
+      getname:this.username,
+      getpsd:this.password,
+    };
+    let datastr = JSON.stringify(dataobj);
+    this.routerconst.navigate(['/detail',datastr])
   }
 
 

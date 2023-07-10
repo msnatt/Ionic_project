@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -7,18 +6,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./contact.page.scss'],
 })
 export class ContactPage implements OnInit {
-  username:any;
-  password:any;
 
-
-  constructor(public activeroute: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-
-    this.username = this.activeroute.snapshot.paramMap.get('uname');
-    this.password = this.activeroute.snapshot.paramMap.get('psd');
-
-    
   }
 
 }

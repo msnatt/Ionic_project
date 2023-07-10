@@ -5,7 +5,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+  <ion-img
+  src="https://s359.kapook.com/pagebuilder/87ab33ae-8dca-487d-ac86-779086de65e0.jpg"
+  alt="Beautiful viewpoints all over Thailand. Impressive with the beautiful view."
+  style="width: 50%; height: 50%;"
+></ion-img>
   <ion-list>
     <ion-item>
       <ion-label>Username</ion-label>
@@ -16,7 +20,7 @@
       <ion-label>Password</ion-label>
       <ion-input type="password" [(ngModel)]="password" required></ion-input>
     </ion-item>
-    
+
     <ion-button type="submit" (click)="gotonext()" expand="block" >Login</ion-button>
   </ion-list>
 
