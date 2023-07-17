@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, Firestore} from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, Firestore} from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 
 export interface CustomerData {
@@ -8,7 +8,6 @@ fullname: string;
 ispostpaid: boolean;
 price: number;
 tel: string;
-
 }
 
 @Injectable({
@@ -23,5 +22,21 @@ private _DB : any;
   loadAllData(): Observable<CustomerData[]> {
     const notesRef = collection(this.firestore, 'DataCollection');
     return collectionData(notesRef, { idField: 'id'}) as Observable<CustomerData[]>;
+}//funcloaddata
+  CreateData(tmpObj: CustomerData) {
+    const notesRef = collection(this.firestore, 'DataCollection');
+
+  return addDoc(notesRef, {
+        fullname: tmpObj.fullname,
+        price: tmpObj.price,
+        tel: tmpObj.tel,
+        ispostpaid: tmpObj.ispostpaid
+  });
+  }//funcadd
+
 }
-}
+
+
+
+
+

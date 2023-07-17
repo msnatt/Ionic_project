@@ -67,6 +67,7 @@ export class AboutPage implements OnInit {
           text: 'Update',
           handler: data => {
 
+
             for (let i=0;i<this.productlist.length;i++)
             {
               if (this.productlist[i] == item){
