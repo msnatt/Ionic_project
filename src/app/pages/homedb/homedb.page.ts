@@ -61,7 +61,58 @@ export class HomedbPage implements OnInit {
         },
         {
           name: 'ispostpaid',
-          placeholder:'ispostpaid'
+          placeholder:'ispostpaid',
+          type:'radio'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Create',
+          handler: data => {
+            const ispostpaid = data.ispostpaid === 'on';
+            const customerData:CustomerData = {
+              fullname: data.fullname,
+              price: data.price,
+              tel: data.tel,
+              ispostpaid: ispostpaid
+            }
+            this.dataService.createData(customerData);
+          }
+        }
+      ]
+    });
+    (await alert).present();
+  }
+  async editData(customer: CustomerData)
+  {
+    let alert = this.alertCtrl.create({
+      header: 'Update',
+      subHeader: 'Update data to DB',
+
+      inputs: [
+        {
+          name: 'fullname',
+          placeholder:'Full name'
+        },
+        {
+          name: 'price',
+          placeholder:'Price'
+        },
+        {
+          name: 'tel',
+          placeholder:'Tel No.'
+        },
+        {
+          name: 'ispostpaid',
+          placeholder:'ispostpaid',
+          type:'radio'
         }
       ],
       buttons: [
@@ -75,17 +126,48 @@ export class HomedbPage implements OnInit {
         {
           text: 'Update',
           handler: data => {
-            const CustomerData:CustomerData = {
+            const ispostpaid = data.ispostpaid === 'on';
+            const customerData:CustomerData = {
+              id: customer.id,
               fullname: data.fullname,
               price: data.price,
               tel: data.tel,
-              ispostpaid: data.ispostpaid
+              ispostpaid: ispostpaid
             }
-            this.dataService.CreateData(CustomerData);
+            this.dataService.editData(customerData);
           }
         }
       ]
     });
     (await alert).present();
   }
+
+
+  async deleteData(customer: CustomerData)
+  {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm Deletion',
+      message: `Are you sure you want to delete ${customer.fullname}?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.dataService.deletedata(customer).then(() => {
+              this.datalist = this.datalist.filter(item => item.id !== customer.id);
+              this.cd.detectChanges();
+            }).catch(error => {
+              console.error('Error deleting document:', error);
+            });
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
+
+
 }
