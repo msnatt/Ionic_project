@@ -25,6 +25,10 @@ const routes: Routes = [
   },  {
     path: 'homedb',
     loadChildren: () => import('./pages/homedb/homedb.module').then( m => m.HomedbPageModule)
+  },
+  {
+    path: 'login-auth',
+    loadChildren: () => import('./pages/login-auth/login-auth.module').then( m => m.LoginAuthPageModule)
   }
 
 

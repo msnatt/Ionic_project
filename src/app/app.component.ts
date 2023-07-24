@@ -1,3 +1,4 @@
+import { Icon } from 'ionicons/dist/types/components/icon/icon';
 import { Component } from '@angular/core';
 // import { url } from 'inspector';
 
@@ -11,7 +12,8 @@ export class AppComponent {
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'About', url: '/about', icon: 'people' },
     { title: 'Contact', url: '/contact', icon: 'call' },
-    { title: 'HomeDB', url:'/homedb', icon: 'server'}
+    { title: 'HomeDB', url:'/homedb', icon: 'server'},
+    { title: 'Login', url:'/login-auth',icon: 'people'},
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {}

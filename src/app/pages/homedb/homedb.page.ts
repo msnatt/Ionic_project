@@ -33,7 +33,7 @@ export class HomedbPage implements OnInit {
         this.cd.detectChanges();
 
       });
-      // this.dataService.CreateData(this.dataadd)
+
 
      }
 
@@ -41,7 +41,7 @@ export class HomedbPage implements OnInit {
 
   ngOnInit() {
   }
-  async adddb(datalist:any) {
+  async adddb() {
     let alert = this.alertCtrl.create({
       header: 'Add',
       subHeader: 'Add data to DB',
@@ -99,20 +99,23 @@ export class HomedbPage implements OnInit {
       inputs: [
         {
           name: 'fullname',
-          placeholder:'Full name'
+          placeholder:'Full name',
+          value:customer.fullname,
         },
         {
           name: 'price',
-          placeholder:'Price'
+          placeholder:'Price',
+          value:customer.price,
         },
         {
           name: 'tel',
-          placeholder:'Tel No.'
+          placeholder:'Tel No.',
+          value:customer.tel,
         },
         {
           name: 'ispostpaid',
           placeholder:'ispostpaid',
-          type:'radio'
+          type:'checkbox',
         }
       ],
       buttons: [
